@@ -1,24 +1,25 @@
-# README
+# odin-rails-facebook
+## The Odin Project - Building Facebook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project completed as part of The Odin Project. Build an application similar to Facebook
 
-Things you may want to cover:
+## Features:
+ - 
 
-* Ruby version
+## Languages/Technologies used:
+ - Rails 
+ - Ruby
+ - PostgreSQL
+ - CSS - Bulma
+ - VS Code
+ - Git/Github
 
-* System dependencies
+## What I learned:
+ - 
+ 
+## Still can improve:
+ - 
 
-* Configuration
+Assignment - https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+View Project  - TBD, haven't decided what to deploy on since Heroku is no longer free. 
