@@ -5,4 +5,7 @@
 <%= "Birthday: #{ @user.birthday }" %><br>
 <%= "Occupation: #{ @user.occupation }" %><br>
 <%= "College: #{ @user.college }" %><br>
-<%= "High School: #{ @user.high_school }" %><br>
+<%= "High School: #{ @user.high_school }" %><br><br>
+<% if @user == current_user %>
+  <%= link_to "Edit Profile", edit_user_path(current_user) %>
+<% end %>
