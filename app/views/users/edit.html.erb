@@ -1,0 +1,31 @@
+<h1>Edit User Profile</h1>
+
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+  </div>
+  <div>
+    <%= form.label :high_school %>
+    <%= form.text_field :high_school %>
+  </div>
+  <div>
+    <%= form.label :college %>
+    <%= form.text_field :college %>
+  </div>
+  <div>
+    <%= form.label :occupation %>
+    <%= form.text_field :occupation %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
