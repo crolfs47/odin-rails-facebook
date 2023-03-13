@@ -75,3 +75,5 @@ end
 gem 'devise'
 
 gem "bulma-rails", "~> 0.9.4"
+
+gem "factory_bot_rails"
