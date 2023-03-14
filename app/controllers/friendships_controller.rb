@@ -4,6 +4,11 @@ class FriendshipsController < ApplicationController
   end
   
   def create
+    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
+  
+    if @friendship.save
+      redirect_to User.find(@friendship.friend_id)
+    end
   end
 
   private

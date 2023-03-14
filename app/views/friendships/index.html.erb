@@ -3,3 +3,7 @@
 <h2>Friend Requests</h2><br><br>
 
 <h2>Your Friends</h2>
+<% @user.friends.each do |friend| %>
+  <%= link_to friend.full_name, friend %>
+<% end %>
+

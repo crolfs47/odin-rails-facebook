@@ -9,3 +9,10 @@
 <% if @user == current_user %>
   <%= link_to "Edit Profile", edit_user_path(current_user) %>
 <% end %>
+<% if @user != current_user %>
+  <%= form_with model: @friendship, url: friendships_path do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :friend_id, value: @user.id %>
+    <%= form.submit "Add Friend", class: "button is-success is-outlined" %>
+  <% end %>
+<% end %>
