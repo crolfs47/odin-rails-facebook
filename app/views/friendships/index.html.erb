@@ -2,19 +2,15 @@
 
 <h2>Friend Requests</h2><br><br>
 
-<h2>Your Friends</h2>
-<% @user.friends.each do |friend| %>
+<h2>Pending Friends Sent</h2>
+
+<% @user.pending_friends_sent.each do |friend| %>
   <%= link_to friend.full_name, friend %>
 <% end %><br><br>
 
-<h2>Pending Friends</h2>
-<% @user.friendships.pending.each do |friendship| %>
-  <%= link_to friendship.friend.full_name, friendship.friend %>
-<% end %><br><br>
 
-
-<h2>Accepted Friends</h2>
-<% @user.friendships.accepted.each do |friend| %>
-  <%= link_to friendship.friend.full_name, friendship.friend %>
+<h2>Accepted Friends Sent</h2>
+<% @user.accepted_friends_sent.each do |friend| %>
+  <%= link_to friend.full_name, friend %>
 <% end %><br><br>
 
