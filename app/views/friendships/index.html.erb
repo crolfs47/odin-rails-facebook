@@ -1,16 +1,23 @@
-<h1><%= "#{@user.full_name}'s Friend Page" %></h1>
+<h1><%= "#{@user.full_name}'s Friend Page" %></h1><br>
 
-<h2>Friend Requests</h2><br><br>
+<h2>Accepted Friends</h2>
+<% @user.friends.each do |friend| %>
+  <%= link_to friend.full_name, friend %>
+<% end %><br><br>
 
-<h2>Pending Friends Sent</h2>
+
+<h2>Pending Friend Requests Received</h2>
+
+<% @user.pending_friends_rec.each do |friend| %>
+  <%= link_to friend.full_name, friend %>
+<% end %><br><br>
+
+<h2>Pending Friend Requests Sent</h2>
 
 <% @user.pending_friends_sent.each do |friend| %>
   <%= link_to friend.full_name, friend %>
 <% end %><br><br>
 
 
-<h2>Accepted Friends Sent</h2>
-<% @user.accepted_friends_sent.each do |friend| %>
-  <%= link_to friend.full_name, friend %>
-<% end %><br><br>
+
 
