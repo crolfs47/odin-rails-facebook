@@ -24,5 +24,9 @@ class User < ApplicationRecord
     accepted_friends_sent + accepted_friends_rec
   end
 
+  def pending_friends
+    pending_friends_sent + pending_friends_rec
+  end
+
 
 end
