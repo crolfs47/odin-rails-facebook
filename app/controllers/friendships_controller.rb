@@ -21,7 +21,6 @@ class FriendshipsController < ApplicationController
 
     @friendship.accept
     if @friendship.update(friendship_params)
-      flash.now[:success] = "Friend Request Accepted!"
       redirect_to @friendship
     end
   end
