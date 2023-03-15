@@ -51,7 +51,15 @@ RSpec.describe 'Friendship', type: :feature do
     end
 
     it 'they can delete a pending request they received' do
-      
+      login_as(user1)
+      visit user_path(id: user2.id)
+      click_on 'Add Friend'
+      click_on 'Logout'
+
+      login_as(user2)
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Delete Request'
+      expect(page).not_to have_content(user1.full_name)
     end
   end
 end
