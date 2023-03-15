@@ -25,4 +25,18 @@ RSpec.describe 'Friendship', type: :feature do
       expect(page).to have_content('Friendship Pending')
     end
   end
+
+  context 'When a user accepts a friend request' do
+    it 'changes status to friends' do
+      login_as(user1)
+      visit user_path(id: user2.id)
+      click_on 'Add Friend'
+      click_on 'Logout'
+
+      login_as(user2)
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Confirm Request'
+      expect(page).to have_content('Friendship Confirmed')
+    end
+  end
 end

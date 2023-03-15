@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'posts#index'
   resources :posts
-  resources :users, only: %i[index show edit] do
+  resources :users, only: %i[index show edit update] do
     resources :friendships
   end
 end
