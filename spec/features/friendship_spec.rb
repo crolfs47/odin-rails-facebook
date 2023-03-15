@@ -62,4 +62,36 @@ RSpec.describe 'Friendship', type: :feature do
       expect(page).not_to have_content(user1.full_name)
     end
   end
+
+  context 'When a user has accepted friends' do
+    it 'they can unfriend a friend they requested' do
+      login_as(user1)
+      visit user_path(id: user2.id)
+      click_on 'Add Friend'
+      click_on 'Logout'
+
+      login_as(user2)
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Confirm Request'
+      click_on 'Logout'
+
+      login_as(user1)
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Unfriend'
+      expect(page).not_to have_content(user2.full_name)
+    end
+
+    it 'they can unfriend a friend that requested them' do
+      login_as(user2)
+      visit user_path(id: user1.id)
+      click_on 'Add Friend'
+      click_on 'Logout'
+
+      login_as(user1)
+      visit user_friendships_path(user_id: user2.id)
+      click_on 'Confirm Request'
+      click_on 'Unfriend'
+      expect(page).not_to have_content(user2.full_name)
+    end
+  end
 end
