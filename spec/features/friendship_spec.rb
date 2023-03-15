@@ -39,4 +39,19 @@ RSpec.describe 'Friendship', type: :feature do
       expect(page).to have_content('Friendship Confirmed')
     end
   end
+
+  context 'When a user has a pending friend request' do
+    it 'they can cancel a pending request they sent' do
+      login_as(user1)
+      visit user_path(id: user2.id)
+      click_on 'Add Friend'
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Cancel Request'
+      expect(page).not_to have_content(user2.full_name)
+    end
+
+    it 'they can delete a pending request they received' do
+      
+    end
+  end
 end
