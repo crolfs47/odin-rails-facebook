@@ -4,4 +4,12 @@ class Friendship < ApplicationRecord
 
   scope :accepted, -> { where(accepted: true)}
   scope :pending, -> { where(accepted: false)}
+
+  def accept
+    update(accepted: true)
+  end
+
+  def decline
+  end
+  
 end

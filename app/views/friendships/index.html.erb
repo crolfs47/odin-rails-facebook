@@ -2,14 +2,20 @@
 
 <h2>Accepted Friends</h2>
 <% @user.friends.each do |friend| %>
-  <%= link_to friend.full_name, friend %>
-<% end %><br><br>
+  <%= link_to friend.full_name, friend %><br>
+<% end %><br>
 
 
 <h2>Pending Friend Requests Received</h2>
 
-<% @user.pending_friends_rec.each do |friend| %>
-  <%= link_to friend.full_name, friend %>
+<% @user.received_friendships.pending.each do |friendship| %>
+  <%= link_to friendship.user.full_name, friendship.user %>
+  <%= form_with model: @friendship, url: user_friendship_path(id: friendship.id), method: "patch" do |form| %>
+    <%= form.hidden_field :user_id, value: friendship.user_id %>
+    <%= form.hidden_field :friend_id, value: friendship.friend_id %>
+    <%= form.hidden_field :id, value: friendship.id %>
+    <%= form.submit "Confirm Request", class: "button is-success is-outlined" %>
+  <% end %>
 <% end %><br><br>
 
 <h2>Pending Friend Requests Sent</h2>
