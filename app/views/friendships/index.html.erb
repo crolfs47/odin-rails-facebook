@@ -12,7 +12,8 @@
 
 <% @user.received_friendships.pending.each do |friendship| %>
   <%= link_to friendship.user.full_name, friendship.user %>
-  <%= link_to "Confirm Request", user_friendship_path(id: friendship.id), data: { turbo_method: :patch }, class: "button is-success is-outlined is-small" %><br>
+  <%= link_to "Confirm Request", user_friendship_path(id: friendship.id), data: { turbo_method: :patch }, class: "button is-success is-outlined is-small" %>
+  <%= link_to "Delete Request", user_friendship_path(id: friendship.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%><br>
 <% end %><br><br>
 
 <h2>Pending Friend Requests Sent</h2>
