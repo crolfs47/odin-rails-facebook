@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show edit update] do
     resources :friendships
   end
+
+  resources :notifications
+
+  # get 'friendships', to: 'friendships#index'
 end
