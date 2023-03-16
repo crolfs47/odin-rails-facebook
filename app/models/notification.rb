@@ -7,4 +7,6 @@ class Notification < ApplicationRecord
   scope :friendships, -> { where(action: 'friendship') }
   scope :likes, -> { where(action: 'like') }
   scope :comments, -> { where(action: 'comment') }
+
+
 end

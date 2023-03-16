@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :friendships
   end
 
-  resources :notifications
+  resources :notifications, only: [:index, :mark_as_read] do
+    collection do
+      patch :mark_as_read, path: "mark_as_read_notifications/:id"
+    end
+  end
 
   # get 'friendships', to: 'friendships#index'
 end
