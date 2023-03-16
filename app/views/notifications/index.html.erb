@@ -1,1 +1,9 @@
 <h1><%= " #{@user.full_name}'s Notifications" %></h1>
+
+<% @user.notifications.each do |notification| %>
+  <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a friend request" %>
+<% end %><br><br>
+
+<% @notifications.each do |notification| %>
+ <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a friend request" %>
+<% end %>
