@@ -8,6 +8,10 @@
 
 User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
+Friendship.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('friendships')
+Notification.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('notifications')
 
 users = User.create([
   { email: 'crolfs47@gmail.com', password: 'password', full_name: 'Cathy Rolfs', location: 'Chicago' },

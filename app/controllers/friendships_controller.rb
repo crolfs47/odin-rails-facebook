@@ -8,6 +8,7 @@ class FriendshipsController < ApplicationController
 
     return unless @friendship.save
 
+    Notification.create(user_id: params[:friend_id], notifiable: @friendship, action: 'friendship')
     redirect_to User.find(params[:friend_id])
   end
 
