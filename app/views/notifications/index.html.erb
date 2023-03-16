@@ -1,9 +1,21 @@
-<h1><%= " #{@user.full_name}'s Notifications" %></h1>
+<h1><%= " #{current_user.full_name}'s Notifications" %></h1><br>
 
-<% @user.notifications.each do |notification| %>
-  <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a friend request" %>
+<h1>Unread</h1>
+<% @notifications.unread.each do |notification| %>
+  <% if notification.action == 'friendship' %>
+    <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
+    <%= link_to "friend request", user_friendships_path(current_user) %>
+  <% elsif notification.action == 'like' %>
+  <% elsif notification.action == 'comment' %>
+  <% end %>
 <% end %><br><br>
 
-<% @notifications.each do |notification| %>
- <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a friend request" %>
-<% end %>
+<h1>Read</h1>
+<% @notifications.read.each do |notification| %>
+  <% if notification.action == 'friendship' %>
+    <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
+    <%= link_to "friend request", user_friendships_path(current_user) %>
+  <% elsif notification.action == 'like' %>
+  <% elsif notification.action == 'comment' %>
+  <% end %>
+<% end %><br><br>
