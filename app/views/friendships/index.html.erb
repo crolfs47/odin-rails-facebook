@@ -10,7 +10,6 @@
     <%= link_to "Unfriend", user_friendship_path(id: friendship.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%><br>
   <% end %><br>
 
-
 <h2>Pending Friend Requests Received</h2>
 
   <% @user.received_friendships.pending.each do |friendship| %>
