@@ -1,8 +1,6 @@
 <nav class="navbar is-success" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    
     <figure class="navbar-item"><%= image_tag('logo.png') %></figure>
-    
     <%= link_to 'FakeBook', root_path, class: "navbar-item is-size-3 has-text-weight-bold has-text-success-dark" %>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -16,7 +14,6 @@
         <%= link_to 'New Post', new_post_path, class: "navbar-item" %>
         <%= link_to 'Users', users_path, class: "navbar-item" %>
         <%= link_to 'Friends', user_friendships_path(current_user), class: "navbar-item" %>
-        <%= link_to image_tag('bell.png'), notifications_path, class: "navbar-item" %>
       <% end %>
     </div>
     <div class="navbar-end">
@@ -25,24 +22,21 @@
           <%= link_to current_user.full_name, user_path(current_user), class: "navbar-item has-text-white" %>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              <% if @unread_count.nil? || @unread_count < 1 %>
+              <% if current_user.notifications.unread.length < 1 %>
                 <%= image_tag('bell.png') %>
-              <% else %>  
+              <% else %>
                 <%= image_tag('bell-solid.png') %>
-              <% end %>  
+              <% end %>
             </a>
             <div class="navbar-dropdown">
-              <% if !@unread_count.nil? %>
-                <a class="navbar-item">
-                  <%= link_to "#{@unread_count} New Notifications", notifications_path, class: "navbar-item" %>
-                </a>
-              <% end %>
+              <a class="navbar-item">
+                <%= link_to "#{current_user.notifications.unread.length} New Notifications", notifications_path, class: "navbar-item" %>
+              </a>
               <a class="navbar-item">
                 <%= link_to 'All Notifications', notifications_path, class: "navbar-item" %>
               </a>
             </div>
           </div>
-          
         <% end %>
         <div class="buttons">
           <% if current_user %>

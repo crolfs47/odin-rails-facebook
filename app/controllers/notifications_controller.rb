@@ -1,7 +1,6 @@
 class NotificationsController < ApplicationController
   def index
     @notifications = Notification.where(user: current_user)
-    @unread_count = @notifications.unread.length
   end
 
   def mark_as_read
