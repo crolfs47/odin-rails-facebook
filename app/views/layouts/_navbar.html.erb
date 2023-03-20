@@ -16,13 +16,33 @@
         <%= link_to 'New Post', new_post_path, class: "navbar-item" %>
         <%= link_to 'Users', users_path, class: "navbar-item" %>
         <%= link_to 'Friends', user_friendships_path(current_user), class: "navbar-item" %>
-        <%= link_to 'Notifications', notifications_path, class: "navbar-item" %>
+        <%= link_to image_tag('bell.png'), notifications_path, class: "navbar-item" %>
       <% end %>
     </div>
     <div class="navbar-end">
-      <div class="navbar-item">
+      <div class="navbar-start">
         <% if current_user %>
-          <div class="navbar-item"><%= link_to current_user.full_name, user_path(current_user), class: "navbar-start has-text-white" %></div>
+          <%= link_to current_user.full_name, user_path(current_user), class: "navbar-item has-text-white" %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              <% if @unread_count.nil? || @unread_count < 1 %>
+                <%= image_tag('bell.png') %>
+              <% else %>  
+                <%= image_tag('bell-solid.png') %>
+              <% end %>  
+            </a>
+            <div class="navbar-dropdown">
+              <% if !@unread_count.nil? %>
+                <a class="navbar-item">
+                  <%= link_to "#{@unread_count} New Notifications", notifications_path, class: "navbar-item" %>
+                </a>
+              <% end %>
+              <a class="navbar-item">
+                <%= link_to 'All Notifications', notifications_path, class: "navbar-item" %>
+              </a>
+            </div>
+          </div>
+          
         <% end %>
         <div class="buttons">
           <% if current_user %>

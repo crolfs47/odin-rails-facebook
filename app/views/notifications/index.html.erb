@@ -1,12 +1,16 @@
 <h1><%= " #{current_user.full_name}'s Notifications" %></h1><br>
 
+<%= @unread_count %>
+
 <h1>Unread</h1>
 <% @notifications.unread.each do |notification| %>
   <% if notification.action == 'friendship' %>
     <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
-    <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %><br>
   <% elsif notification.action == 'like' %>
+
   <% elsif notification.action == 'comment' %>
+
   <% end %>
 <% end %><br><br>
 
@@ -14,7 +18,7 @@
 <% @notifications.read.each do |notification| %>
   <% if notification.action == 'friendship' %>
     <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
-    <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    <%= link_to "friend request", user_friendships_path(current_user) %>
   <% elsif notification.action == 'like' %>
   <% elsif notification.action == 'comment' %>
   <% end %>
