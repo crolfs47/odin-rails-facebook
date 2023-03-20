@@ -1,2 +1,17 @@
-<h1>Posts Index</h1>
-<%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+
+<%= form_with model: @post, method: :post do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div>
+    <%= form.text_area :content, placeholder: "What's on your mind, #{current_user.full_name}?" %>
+  </div>
+  <div>
+    <%= form.submit "Post" %>
+  </div>
+<% end %><br>
+
+
+<% @posts.each do |post| %>
+  <%= post.user.full_name %><br>
+  <%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %><br>
+  <%= post.content %><br><br>
+<% end%><br>
