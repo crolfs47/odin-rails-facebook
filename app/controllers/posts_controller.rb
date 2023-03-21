@@ -6,7 +6,7 @@ class PostsController < ApplicationController
                  .order(created_at: :desc)
     @post = Post.new
   end
-  
+
   def new
     @post = Post.new
   end
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
     redirect_to root_path
     if @post.save
-      flash[:notice] = "New post created."
+      flash[:notice] = 'New post created.'
     else
       flash[:warning] = "Error: #{@post.errors.full_messages.join}"
     end
@@ -25,9 +25,9 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    
+
     redirect_to root_path, status: :see_other
-    flash[:notice] = "Post successfully deleted."
+    flash[:notice] = 'Post successfully deleted.'
   end
 
   private

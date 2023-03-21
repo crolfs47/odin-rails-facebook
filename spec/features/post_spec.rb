@@ -34,6 +34,24 @@ RSpec.describe 'Like', type: :feature do
       visit root_path
       expect(page).not_to have_content('Test post')
     end
+
+    it 'they can delete the post they made' do
+      click_on 'Delete Post'
+      expect(page).to have_content('Post successfully deleted.')
+    end
+
+    it "the user's friend cannot delete their post" do
+      visit user_path(id: user2.id)
+      click_on 'Add Friend'
+      click_on 'Logout'
+
+      login_as(user2)
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Confirm Request'
+      visit root_path
+      expect(page).to have_content('Test post')
+      expect(page).not_to have_content('Delete post')
+    end
   end
 
   context 'When a user makes a post with no content' do
