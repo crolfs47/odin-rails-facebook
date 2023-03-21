@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'posts#index'
   resources :posts do
-    resources :likes, only: %i[create destroy]
+    resources :likes, only: %i[new create destroy]
   end
 
   resources :users, only: %i[index show edit update] do
