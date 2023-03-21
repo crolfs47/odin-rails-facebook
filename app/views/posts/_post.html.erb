@@ -1,3 +1,11 @@
-  <%= post.user.full_name %><br>
-  <%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %><br>
-  <%= post.content %><br>
+<%= post.user.full_name %><br>
+<%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %><br>
+<%= post.content %><br>
+<% like = post.find_like(current_user) %>
+<% if current_user.likes.where(post_id: post.id).exists? %>
+  <%= link_to "Unlike", post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%><br>
+  <br>
+<% else %>
+  <%= link_to "Like", post_likes_path(post_id: post.id, user_id: current_user.id), data: { turbo_method: :post }, class: "button is-success is-outlined is-small" %><br>
+  <br>
+<% end %>

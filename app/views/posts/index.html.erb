@@ -9,18 +9,6 @@
   </div>
 <% end %><br>
 
-
 <% @posts.each do |post| %>
   <%= render 'post', post: post %>
-  <% like = post.find_like(current_user) %>
-  <% if current_user.likes.where(post_id: post.id).exists? %>
-    <%= like.id %>
-    <%= link_to "Unlike", post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%><br>
-  <% elsif !current_user.likes.where(post_id: post.id).exists? %>
-    <%= form_with model: @like, method: :post, url: post_likes_path(post.id) do |form| %>
-      <%= form.hidden_field :post_id, value: post.id %>
-      <%= form.hidden_field :user_id, value: current_user.id %>
-      <%= form.submit "Like", class: "button is-success is-outlined is-small" %>
-    <% end %><br>
-  <% end %>
 <% end%><br>
