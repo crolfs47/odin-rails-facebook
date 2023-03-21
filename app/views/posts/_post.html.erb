@@ -1,6 +1,7 @@
 <%= post.user.full_name %><br>
 <%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %><br>
 <%= post.content %><br>
+<%= "Likes: #{post.likes.length}" %><br>
 <% like = post.find_like(current_user) %>
 <% if current_user.likes.where(post_id: post.id).exists? %>
   <%= link_to "Unlike", post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%><br>
