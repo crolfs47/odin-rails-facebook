@@ -5,11 +5,17 @@
     <%= form.text_area :content, placeholder: "What's on your mind, #{current_user.full_name}?" %>
   </div>
   <div>
-    <%= form.submit "Post" %>
+    <%= form.submit "Post", class: "button is-success is-outlined is-small" %>
   </div>
 <% end %><br>
 
 
 <% @posts.each do |post| %>
   <%= render 'post', post: post %>
+  
+  <%= form_with model: @like, method: :post, url: post_likes_path(post.id) do |form| %>
+    <%= form.hidden_field :post_id, value: post.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit "Like", class: "button is-success is-outlined is-small" %>
+  <% end %><br>
 <% end%><br>

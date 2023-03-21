@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'posts#index'
-  resources :posts
+  resources :posts do
+    resources :likes, only: %i[create destroy]
+  end
+
   resources :users, only: %i[index show edit update] do
     resources :friendships
   end
 
-  resources :notifications, only: [:index, :mark_as_read] do
+  resources :notifications, only: %i[index mark_as_read] do
     collection do
-      patch :mark_as_read, path: "mark_as_read_notifications/:id"
+      patch :mark_as_read, path: 'mark_as_read_notifications/:id'
     end
   end
 
