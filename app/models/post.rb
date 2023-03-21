@@ -8,4 +8,6 @@ class Post < ApplicationRecord
   def find_like(user)
     likes.find_by(user: user)
   end
+
+
 end

@@ -33,5 +33,8 @@ class User < ApplicationRecord
     pending_friends_sent + pending_friends_rec
   end
 
+  def liked_post?(post)
+    likes.where(post_id: post.id).exists?
+  end
 
 end
