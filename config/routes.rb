@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts do
     resources :likes, only: %i[new create destroy]
+    resources :comments, only: %i[new create destroy]
   end
 
   resources :users, only: %i[index show edit update] do
