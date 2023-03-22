@@ -1,13 +1,15 @@
 <div>
     <%= post.user.full_name %><br>
     <%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %><br>
-    <%= post.content %><br>
-    <div>
-      <% if current_user.id == post.user.id %>
-        <%= link_to "Edit Post", edit_post_path(id: post.id) %>
-        <%= link_to "Delete Post", post_path(id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%>
-      <% end %><br><br>
-    </div>
+    <%= turbo_frame_tag dom_id(post, "edit-post") do %>
+      <%= post.content %><br>
+    <% end %>
+      <div>
+        <% if current_user.id == post.user.id %>
+          <%= link_to "Edit Post", edit_post_path(id: post.id), data: { turbo_frame: dom_id(post, "edit-post") } %>
+          <%= link_to "Delete Post", post_path(id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
 </div>
 
 <div>
@@ -17,6 +19,6 @@
     <%= link_to "Unlike", post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete }, class: "button is-success is-outlined is-small"%>
   <% else %>
     <%= link_to "Like", post_likes_path(post_id: post.id, user_id: current_user.id), data: { turbo_method: :post }, class: "button is-success is-outlined is-small" %>
-  <% end %>
+  <% end %><br><br>
 </div>
 

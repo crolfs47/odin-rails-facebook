@@ -1,11 +1,13 @@
-<div>
-    <%= form_with model: @post do |form| %>
-      <%= form.hidden_field :user_id, value: current_user.id %>
-      <div>
-        <%= form.text_area :content %>
-      </div>
-      <div>
-        <%= form.submit %>
-      </div>
-    <% end %><br>
-</div>
+<%= turbo_frame_tag dom_id(@post, "edit-post") do %>
+  <div>
+      <%= form_with model: @post do |form| %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <div>
+          <%= form.text_area :content %>
+        </div>
+        <div>
+          <%= form.submit class: "button is-success is-outlined is-small" %>
+        </div>
+      <% end %><br>
+  </div>
+<% end %>
