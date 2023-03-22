@@ -40,7 +40,7 @@ RSpec.describe 'Like', type: :feature do
       expect(page).to have_content('Post successfully deleted.')
     end
 
-    it "the user's friend cannot delete their post" do
+    it "another user cannot delete their post" do
       visit user_path(id: user2.id)
       click_on 'Add Friend'
       click_on 'Logout'
@@ -51,6 +51,25 @@ RSpec.describe 'Like', type: :feature do
       visit root_path
       expect(page).to have_content('Test post')
       expect(page).not_to have_content('Delete post')
+    end
+
+    it 'they can edit the post they made' do
+      click_on 'Edit Post'
+      fill_in 'post_content', with: 'Test post edited'
+      click_on 'Update Post'
+      expect(page).to have_content('Test post edited')
+    end
+
+    it 'another user cannot edit their post' do
+      visit user_path(id: user2.id)
+      click_on 'Add Friend'
+      click_on 'Logout'
+
+      login_as(user2)
+      visit user_friendships_path(user_id: user1.id)
+      click_on 'Confirm Request'
+      visit root_path
+      expect(page).not_to have_content('Edit Post')
     end
   end
 
