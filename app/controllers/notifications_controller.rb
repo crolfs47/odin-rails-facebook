@@ -7,7 +7,12 @@ class NotificationsController < ApplicationController
     # add if statement for friendship/like/comment instead of having it in views
     @notification = Notification.find(params[:id])
     @notification.update(read: true)
-    redirect_to user_friendships_path(current_user)
+    if @notification.action == 'friendship'
+      redirect_to user_friendships_path(current_user)
+    elsif @notification.action == 'like'
+      @post_id = Like.find(@notification.notifiable_id).post.id
+      redirect_to post_path(@post_id)
+    end
   end
 
   private

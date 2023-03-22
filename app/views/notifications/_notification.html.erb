@@ -1,0 +1,8 @@
+  <% if notification.action == 'friendship' %>
+    <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
+    <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+  <% elsif notification.action == 'like' %>
+    <%= "#{Like.find(notification.notifiable_id).user.full_name} liked your post" %>
+    <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+  <% elsif notification.action == 'comment' %>
+  <% end %><br>

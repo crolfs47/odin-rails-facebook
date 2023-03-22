@@ -3,6 +3,7 @@ class LikesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @like = @post.likes.create(post_id: params[:post_id], user_id: params[:user_id])
+    Notification.create(user_id: @post.user_id, notifiable: @like, action: 'like')
     redirect_to root_path
   end
 
