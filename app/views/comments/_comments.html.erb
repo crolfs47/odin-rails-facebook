@@ -1,4 +1,7 @@
 <% post.comments.each do |comment| %>
   <%= comment.user.full_name %>
-  <%= comment.content %><br>
+  <%= comment.content %>
+  <% if current_user.id == comment.user.id %>
+    <%= link_to "Delete Comment", post_comment_path(post_id: post.id, id: comment.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <% end %><br>
 <% end %>
