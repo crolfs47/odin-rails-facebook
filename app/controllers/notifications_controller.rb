@@ -12,6 +12,9 @@ class NotificationsController < ApplicationController
     elsif @notification.action == 'like'
       @post_id = Like.find(@notification.notifiable_id).post.id
       redirect_to post_path(@post_id)
+    elsif @notification.action == 'comment'
+      @post_id = Comment.find(@notification.notifiable_id).post.id
+      redirect_to post_path(@post_id)
     end
   end
 

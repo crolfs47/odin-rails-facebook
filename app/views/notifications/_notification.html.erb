@@ -2,7 +2,9 @@
     <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
     <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
   <% elsif notification.action == 'like' %>
-    <%= "#{Like.find(notification.notifiable_id).user.full_name} liked your post" %>
+    <%= "#{Like.find(notification.notifiable_id).user.full_name} liked your" %>
     <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
   <% elsif notification.action == 'comment' %>
+    <%= "#{Comment.find(notification.notifiable_id).user.full_name} commented on your" %>
+    <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
   <% end %><br>

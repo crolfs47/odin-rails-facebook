@@ -3,9 +3,10 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(post_id: params[:post_id], user_id: params[:user_id], content: params[:content])
-    # redirect_to root_path
+    redirect_to root_path
     if @comment.save
-      redirect_to root_path
+      flash[:notice] = 'New comment created.'
+      Notification.create(user_id: @post.user_id, notifiable: @comment, action: 'comment')
     else
       flash[:warning] = "Error: #{@comment.errors.full_messages.join}"
     end
