@@ -8,7 +8,6 @@ RSpec.describe 'Notification', type: :feature do
 
   context 'When user 1 likes a post that user 2 made' do
     before do
-
       login_as(user1)
       visit root_path
       click_on 'Like'
@@ -18,7 +17,7 @@ RSpec.describe 'Notification', type: :feature do
     end
 
     it 'user 2 gets a notification' do
-      expect(page).to have_content(' New Notifications')
+      expect(page).to have_content('1 New Notifications')
     end
 
     it 'user 2 gets the correct type of unread notification' do

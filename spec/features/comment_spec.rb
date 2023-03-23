@@ -3,38 +3,21 @@ require 'rails_helper'
 RSpec.describe 'Comment', type: :feature do
   let!(:user1) { FactoryBot.create(:user, :user1) }
   let!(:user2) { FactoryBot.create(:user, :user2) }
+  let!(:friendship) { Friendship.create(user: user1, friend: user2, accepted: true) }
+  let!(:post) { Post.create(user: user1, content: 'User 1 test post') }
+  let!(:comment) { Comment.create(post: post, user: user2, content: 'User 2 test comment')}
 
   context 'When a user comments on a post' do
-    before do
+    it 'displays the new comment' do
       login_as(user1)
       visit root_path
-      fill_in 'post_content', with: 'User 1 test post'
-      click_on 'Post'
-      visit user_path(id: user2.id)
-      click_on 'Add Friend'
-      click_on 'Logout'
-
-      login_as(user2)
-      visit user_friendships_path(user_id: user1.id)
-      click_on 'Confirm Request'
-      visit root_path
-      click_on 'Logout'
-    end
-
-    it 'they can comment on one of their own posts' do
-      login_as(user1)
-      visit root_path
-      expect(page).to have_content('Add Comment')
+      expect(page).to have_content('User 2 test comment')
       # fill_in 'Write a comment...', with: 'User 1 test comment'
       # click_on 'Add comment'
       # expect(page).to have_content('New comment created.')
     end
 
-    it "they can comment on another user's post" do
-    
-    end
-
-    it 'they cannot submit a blank comment' do
+    it 'does not allow a blank comment' do
       
     end
   end

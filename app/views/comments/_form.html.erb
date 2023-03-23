@@ -1,6 +1,9 @@
-  <%= form_with model: @comment, method: :post, url: post_comments_path(post.id) do |form| %>
-    <%= form.hidden_field :post_id, value: post.id %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.text_area :content, placeholder: 'Write a comment...' %>
-    <%= form.submit 'Add comment', class: "button is-success is-outlined is-small" %>
-  <% end %>
+
+  <div>
+    <%= form_with model: @comment, method: :post, url: post_comments_path(post.id) do |form| %>
+      <%= form.hidden_field :post_id, value: post.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.text_area :content, placeholder: 'Write a comment...' %>
+      <%= form.submit 'Add comment', class: "button is-success is-outlined is-small" %>
+    <% end %>
+  </div>
