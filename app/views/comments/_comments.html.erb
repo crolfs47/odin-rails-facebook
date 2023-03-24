@@ -1,7 +1,16 @@
-<% post.comments.each do |comment| %>
-  <%= comment.user.full_name %>
-  <%= comment.content %>
-  <% if current_user.id == comment.user.id %>
-    <%= link_to "Delete Comment", post_comment_path(post_id: post.id, id: comment.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  <% end %><br>
-<% end %>
+<div class="comment-container">
+  <% post.comments.each do |comment| %>
+    <div class="media is-align-items-center" >
+      <div class="media-content">
+        <small><strong><%= comment.user.full_name %></strong></small>
+        <br>
+        <small><%= comment.content %></small>
+      </div>
+      <div class="media-right">
+        <% if current_user.id == comment.user.id %>
+          <%= link_to image_tag('delete.png'), post_comment_path(post_id: post.id, id: comment.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "image is-16x16" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

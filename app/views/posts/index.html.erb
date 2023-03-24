@@ -1,4 +1,4 @@
-<br>
+<div class="section">
 <%= form_with model: @post, method: :post do |form| %>
   <%= form.hidden_field :user_id, value: current_user.id %>
   <div>
@@ -11,4 +11,5 @@
 
 <% @posts.each do |post| %>
   <%= render 'post', post: post %>
-<% end%><br>
+<% end%>
+</div>

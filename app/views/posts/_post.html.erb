@@ -1,28 +1,46 @@
-<div>
-    <%= post.user.full_name %><br>
-    <%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %><br>
-    <%= turbo_frame_tag dom_id(post, "edit-post") do %>
-      <%= post.content %><br>
-    <% end %>
-      <div>
+<div class="card-container">
+<div class="card">
+  <div class="post-card-content">
+    <div class="media is-align-items-center">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-6"><%= post.user.full_name %></p>
+        <p class="subtitle is-7"><%= post.created_at.strftime('%b %-d, %Y at %-I:%M %p') %></p>
+      </div>
+      <div class="media-right is-flex">
         <% if current_user.id == post.user.id %>
-          <%= link_to "Edit Post", edit_post_path(id: post.id), data: { turbo_frame: dom_id(post, "edit-post") } %>
-          <%= link_to "Delete Post", post_path(id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          <%= link_to image_tag('edit.png'), edit_post_path(id: post.id), data: { turbo_frame: dom_id(post, "edit-post") }, class: "image is-16x16" %>
+          <%= link_to image_tag('delete.png'), post_path(id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "image is-16x16" %>
         <% end %>
       </div>
+    </div>
+    <div class="content">
+      <%= turbo_frame_tag dom_id(post, "edit-post") do %>
+        <%= post.content %><br>
+      <% end %>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <div class="card-footer-item">
+      <% like = post.find_like(current_user) %>
+      <% if current_user.liked_post?(post) %>
+        <%= link_to image_tag('like-solid.png'), post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete }, class: "image is-16x16 has-text-success is-flex" %>
+      <% else %>
+        <%= link_to image_tag('like.png'), post_likes_path(post_id: post.id, user_id: current_user.id), data: { turbo_method: :post }, class: "image is-16x16 has-text-success is-flex" %>
+      <% end %>
+      <%= "#{post.likes.length}" %>
+    </div>
+    <div class="card-footer-item">
+      <%= "Comments: #{post.comments.length}" %>
+    </div>
+  </footer>
+  <div>
+    <%= render 'comments/form', post: post %>
+    <%= render 'comments/comments', post: post %>
+  </div>
 </div>
-
-<div>
-  <%= "Likes: #{post.likes.length}" %>
-  <% like = post.find_like(current_user) %>
-  <% if current_user.liked_post?(post) %>
-    <%= link_to "Unlike", post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete }, class: "button is-success is-outlined is-small"%>
-  <% else %>
-    <%= link_to "Like", post_likes_path(post_id: post.id, user_id: current_user.id), data: { turbo_method: :post }, class: "button is-success is-outlined is-small" %>
-  <% end %><br>
-</div>
-
-<div>
-  <%= render 'comments/form', post: post %>
-  <%= render 'comments/comments', post: post %><br>
 </div>

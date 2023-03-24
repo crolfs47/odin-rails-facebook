@@ -14,3 +14,47 @@
  *= require_self
  */
  @import "bulma";
+
+ .section {
+  padding: 1.5rem 1.5rem;
+}
+
+ .card .media:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.card-footer {
+  background-color: transparent;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  align-items: stretch;
+  display: flex;
+}
+
+.card-footer-item {
+  align-items: center;
+  display: flex;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 12px;
+  font-size: .75em;
+}
+.card-footer-item:not(:last-child) {
+  border-right: 0px;
+}
+
+.media + .media {
+  border-top: 1px solid rgba(219, 219, 219, 0.5);
+  margin-top: 12px;
+  padding-top: 12px;
+}
+
+.content p:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.image {
+  margin-right: 6px;
+}
