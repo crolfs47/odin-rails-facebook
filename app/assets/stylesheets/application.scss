@@ -32,12 +32,11 @@
 }
 
 .card-footer-item {
-  align-items: center;
   display: flex;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 0;
-  justify-content: center;
+  justify-content: left;
   padding: 12px;
   font-size: .75em;
 }
