@@ -5,10 +5,10 @@
       <%= form.hidden_field :user_id, value: current_user.id %>
       <div class="field has-addons">
         <p class="control is-expanded">
-          <%= form.text_area :content, placeholder: 'Write a comment...', type: "text", class: "input is-rounded" %>
+          <%= form.text_area :content, placeholder: 'Write a comment...', type: "text", class: "input is-small is-rounded" %>
         </p>
         <div class="control">
-          <%= form.submit 'Add comment', class: "button is-success is-outlined is-rounded" %>
+          <%= form.submit 'Add comment', class: "button is-success is-light is-rounded is-small" %>
         </div>
       </div>
     <% end %>

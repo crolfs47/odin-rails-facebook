@@ -1,15 +1,18 @@
 <div class="section">
-<%= form_with model: @post, method: :post do |form| %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <div>
-    <%= form.text_area :content, placeholder: "What's on your mind, #{current_user.full_name}?" %>
+  <div class="post-container">
+    <%= form_with model: @post, method: :post do |form| %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <div class="field has-addons">
+        <p class="control is-expanded">
+          <%= form.text_area :content, placeholder: "What's on your mind, #{current_user.full_name}?", type: "text", class: "textarea is-small is-success is-rounded" %>
+        </p>
+      </div>
+      <div class="control">
+        <%= form.submit "Post", class: "button is-success is-light is-rounded" %>
+      </div>
+    <% end %><br>
   </div>
-  <div>
-    <%= form.submit "Post", class: "button is-success is-outlined is-small" %>
-  </div>
-<% end %><br>
-
-<% @posts.each do |post| %>
-  <%= render 'post', post: post %>
-<% end%>
+  <% @posts.each do |post| %>
+    <%= render 'post', post: post %>
+  <% end%>
 </div>
