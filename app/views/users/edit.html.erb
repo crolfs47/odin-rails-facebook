@@ -1,35 +1,36 @@
-<h1>Edit User Profile</h1>
-
-<%= form_with model: @user do |form| %>
-  <div>
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
-  </div>
-  <div>
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name %>
-  </div>
-  <div>
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-  <div>
-    <%= form.label :birthday %>
-    <%= form.date_field :birthday %>
-  </div>
-  <div>
-    <%= form.label :high_school %>
-    <%= form.text_field :high_school %>
-  </div>
-  <div>
-    <%= form.label :college %>
-    <%= form.text_field :college %>
-  </div>
-  <div>
-    <%= form.label :occupation %>
-    <%= form.text_field :occupation %>
-  </div>
-  <div>
-    <%= form.submit class: "button is-success is-outlined is-small" %>
-  </div>
+<%= turbo_frame_tag dom_id(@user, "edit-profile") do %>
+  <h1 class="title is-3">Edit User Profile</h1>
+  <%= form_with model: @user do |form| %>
+    <div>
+      <strong><%= form.label :avatar %>:</strong>
+      <%= form.file_field :avatar %>
+    </div>
+    <div>
+      <strong><%= form.label :full_name %>:</strong>
+      <%= form.text_field :full_name %>
+    </div>
+    <div>
+      <strong><%= form.label :location %>:</strong>
+      <%= form.text_field :location %>
+    </div>
+    <div>
+      <strong><%= form.label :birthday %>:</strong>
+      <%= form.date_field :birthday %>
+    </div>
+    <div>
+      <strong><%= form.label :high_school %>:</strong>
+      <%= form.text_field :high_school %>
+    </div>
+    <div>
+      <strong><%= form.label :college %>:</strong>
+      <%= form.text_field :college %>
+    </div>
+    <div>
+      <strong><%= form.label :occupation %>:</strong>
+      <%= form.text_field :occupation %>
+    </div><br>
+    <div>
+      <%= form.submit class: "button is-success is-outlined is-light" %>
+    </div>
+  <% end %>
 <% end %>
