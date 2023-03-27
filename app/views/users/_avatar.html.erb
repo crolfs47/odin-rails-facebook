@@ -1,0 +1,5 @@
+<% if user.avatar.attached? %>
+  <%= image_tag user.avatar, class: "image is-rounded" %>
+<% else %>
+  <%= image_tag('avatar.png', class: "image is-rounded") %>
+<% end %>
