@@ -1,3 +1,25 @@
 <div class="profile-container">
   <%= render 'profile' %>
 </div>
+<input type="radio" checked="checked" id="posts" name="nav-tab">
+<input type="radio" id="friends" name="nav-tab">
+
+<div class="tabs">
+  <ul>
+    <li><label for="posts"><a>Posts</a></label></li>
+    <li><label for="friends"><a>Friends</a></label></li>
+  </ul>
+</div>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane content-posts">
+      <% @posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
+  </div>
+  <div class="tab-pane content-friends">
+    <%= render 'friendships/friends', user: @user%>
+  </div>
+
+</div>
