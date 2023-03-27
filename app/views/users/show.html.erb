@@ -1,37 +1,46 @@
-<h1><%= @user.full_name %></h1><br>
-<div>
-  <figure class="image is-128x128 is-rounded">
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, class: "image is-rounded" %>
-    <% else %>
-      <%= image_tag('avatar.png', class: "image is-rounded") %>  
-    <% end %>
-  </figure>
+<section class="section">
+<div class="box">
+  <div class="columns is-vcentered is-variable is-5">
+    <div class="column is-narrow has-text-centered">
+      <div class="prof-image">
+        <figure class="image is-rounded is-inline-block">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, class: "image is-rounded" %>
+          <% else %>
+            <%= image_tag('avatar.png', class: "image is-rounded") %>  
+          <% end %>
+        </figure>
+      </div>
+    </div>
+    <div class="column">
+      <div>
+        <h1 class="title is-3"><%= @user.full_name %></h1>
+        <strong><%= "Location: " %></strong><%= @user.location %><br>
+        <strong><%= "Birthday: "%></strong><%= @user.birthday %><br>
+        <strong><%= "Occupation: "%></strong><%= @user.occupation %><br>
+        <strong><%= "College: "%></strong><%= @user.college %><br>
+        <strong><%= "High School: "%></strong><%= @user.high_school %><br><br>
+      </div>
+      <div>
+        <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_user_path(current_user), class: "button is-success is-light" %>
+        <% end %>
+        <% if @user != current_user %>
+          <% if @user.friends.include?(current_user)%>
+            <span class="tag is-success is-light is-medium">Friends</span>
+          <% elsif @user.pending_friends.include?(current_user)%>
+            <span class="tag is-success is-light is-medium">Friendship Pending</span>
+          <% else %>  
+            <%= form_with model: @friendship, url: user_friendships_path(current_user.id) do |form| %>
+              <%= form.hidden_field :user_id, value: current_user.id %>
+              <%= form.hidden_field :friend_id, value: @user.id %>
+              <%= form.submit "Add Friend", class: "button is-success is-outlined" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-  <div>
-  <h2>About</h2>
-  <%= "Location: #{ @user.location }" %><br>
-  <%= "Birthday: #{ @user.birthday }" %><br>
-  <%= "Occupation: #{ @user.occupation }" %><br>
-  <%= "College: #{ @user.college }" %><br>
-  <%= "High School: #{ @user.high_school }" %><br><br>
-</div>
-<div>
-  <% if @user == current_user %>
-    <%= link_to "Edit Profile", edit_user_path(current_user) %>
-  <% end %>
-  <% if @user != current_user %>
-    <% if @user.friends.include?(current_user)%>
-      <span class="tag is-success is-light is-medium">Friends</span>
-    <% elsif @user.pending_friends.include?(current_user)%>
-      <span class="tag is-success is-light is-medium">Friendship Pending</span>
-    <% else %>  
-      <%= form_with model: @friendship, url: user_friendships_path(current_user.id) do |form| %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
-        <%= form.hidden_field :friend_id, value: @user.id %>
-        <%= form.submit "Add Friend", class: "button is-success is-outlined" %>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
+</section>
 
