@@ -20,7 +20,7 @@
     </div>
     <div class="content">
       <%= turbo_frame_tag dom_id(post, "edit-post") do %>
-        <%= post.content %><br>
+        <small><%= post.content %></small><br>
       <% end %>
     </div>
   </div>
