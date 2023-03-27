@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :accepted_friends_rec, -> { merge(Friendship.accepted) }, through: :received_friendships, source: :user
   has_many :pending_friends_rec, -> { merge(Friendship.pending) }, through: :received_friendships, source: :user
 
+  has_one_attached :avatar
+
   def accepted_friendships
     friendships.accepted + received_friendships.accepted
   end

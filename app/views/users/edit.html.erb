@@ -2,6 +2,10 @@
 
 <%= form_with model: @user do |form| %>
   <div>
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+  <div>
     <%= form.label :full_name %>
     <%= form.text_field :full_name %>
   </div>
