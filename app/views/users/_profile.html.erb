@@ -25,13 +25,7 @@
               <%= link_to "Edit Profile", edit_user_path(current_user), data: { turbo_frame: dom_id(@user, "edit-profile") }, class: "button is-success is-light is-outlined" %>
             <% end %>
             <% if @user != current_user %>
-              <% if @user.friends.include?(current_user)%>
-                <span class="tag is-success is-light is-medium">Friends</span>
-              <% elsif @user.pending_friends.include?(current_user)%>
-                <span class="tag is-success is-light is-medium">Friendship Pending</span>
-              <% else %>
-                <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friend_id: @user.id), data: { turbo_method: :post }, class: "button is-success is-light is-outlined is-small" %>
-              <% end %>
+              <%= render 'friendship_buttons', user: @user %>
             <% end %>
           </div>
         <% end %>
