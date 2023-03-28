@@ -33,7 +33,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.destroy
 
-    redirect_to user_friendships_path(current_user), status: :see_other
+    redirect_back_or_to root_path, status: :see_other
   end
 
   private
@@ -41,4 +41,7 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id, :id)
   end
+
+
+
 end

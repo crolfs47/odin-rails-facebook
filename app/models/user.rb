@@ -35,6 +35,10 @@ class User < ApplicationRecord
     pending_friends_sent + pending_friends_rec
   end
 
+  def find_friendship(user)
+    Friendship.find_by(user_id: self.id, friend_id: user.id) || Friendship.find_by(user_id: user.id, friend_id: self.id)
+  end
+
   def liked_post?(post)
     likes.where(post_id: post.id).exists?
   end

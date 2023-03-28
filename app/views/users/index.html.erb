@@ -7,7 +7,8 @@
         <% unless current_user == user %>
           <%= render 'users/avatar_name', user: user %>
           <% if current_user.friends.include?(user) %>
-            <%= 'Unfriend' %>
+            <% friendship = current_user.find_friendship(user) %>
+            <%= link_to "Unfriend", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%>
           <% elsif current_user.pending_friends_sent.include?(user) %>
             <%= 'Cancel Friend Request' %>
           <% elsif current_user.pending_friends_rec.include?(user) %>
