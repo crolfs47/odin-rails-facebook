@@ -3,8 +3,23 @@
   <ul>
     <% @users.each do |user| %>
       <li>
-        <%= link_to user.full_name, user %>
+        <div class="is-flex">
+        <% unless current_user == user %>
+          <%= render 'users/avatar_name', user: user %>
+          <% if current_user.friends.include?(user) %>
+            <%= 'Unfriend' %>
+          <% elsif current_user.pending_friends_sent.include?(user) %>
+            <%= 'Cancel Friend Request' %>
+          <% elsif current_user.pending_friends_rec.include?(user) %>
+            <%= 'Accept Friend Request' %>
+          <% else %>
+            <%= 'Add Friend' %>
+          <% end %>
+        <% end %>
+        </div>
       </li>
     <% end %>
   </ul>
 </div>
+
+

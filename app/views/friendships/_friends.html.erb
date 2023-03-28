@@ -1,8 +1,4 @@
 <% user.friends.each do |friend| %>
-  <div class="block is-flex">
-    <figure class="image is-48x48">
-      <%= render 'users/avatar', user: friend %>
-    </figure>
-    <%= link_to friend.full_name, friend %>
-  </div>
+  <%= render 'users/avatar_name', user: friend %>
+
 <% end %>
