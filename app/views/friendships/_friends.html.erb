@@ -1,4 +1,8 @@
 <% user.friends.each do |friend| %>
-  <%= render 'users/avatar_name', user: friend %>
+  <%= render 'users/list', user: friend %>
+<% end %>
 
+Pending Friends
+<% user.pending_friends.each do |friend| %>
+  <%= render 'users/list', user: friend %>
 <% end %>
