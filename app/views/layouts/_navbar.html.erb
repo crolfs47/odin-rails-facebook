@@ -12,7 +12,6 @@
     <div class="navbar-start">
       <% if current_user %>
         <%= link_to 'Discover Users', users_path, class: "navbar-item" %>
-        <%= link_to 'Friends', user_friendships_path(current_user), class: "navbar-item" %>
       <% end %>
     </div>
     <div class="navbar-end">
