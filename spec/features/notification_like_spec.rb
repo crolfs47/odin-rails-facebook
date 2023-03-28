@@ -10,7 +10,7 @@ RSpec.describe 'Notification', type: :feature do
     before do
       login_as(user1)
       visit root_path
-      click_on 'Like'
+      click_link('like')
       click_on 'Logout'
       login_as(user2)
       visit notifications_path

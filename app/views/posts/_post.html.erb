@@ -13,8 +13,8 @@
       </div>
       <div class="media-right is-flex">
         <% if current_user.id == post.user.id %>
-          <%= link_to image_tag('edit.png'), edit_post_path(id: post.id), data: { turbo_frame: dom_id(post, "edit-post") }, class: "image is-16x16" %>
-          <%= link_to image_tag('delete.png'), post_path(id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "image is-16x16" %>
+          <%= link_to image_tag('edit.png', alt: 'edit'), edit_post_path(id: post.id), data: { turbo_frame: dom_id(post, "edit-post") }, class: "image is-16x16" %>
+          <%= link_to image_tag('delete.png', alt: 'delete'), post_path(id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "image is-16x16" %>
         <% end %>
       </div>
     </div>
@@ -28,9 +28,9 @@
     <div class="card-footer-item">
       <% like = post.find_like(current_user) %>
       <% if current_user.liked_post?(post) %>
-        <%= link_to image_tag('like-solid.png'), post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete }, class: "image is-16x16 has-text-success is-flex" %>
+        <%= link_to image_tag('like-solid.png', alt: 'unlike'), post_like_path(post_id: post.id, id: like.id), data: { turbo_method: :delete }, class: "image is-16x16 has-text-success is-flex" %>
       <% else %>
-        <%= link_to image_tag('like.png'), post_likes_path(post_id: post.id, user_id: current_user.id), data: { turbo_method: :post }, class: "image is-16x16 has-text-success is-flex" %>
+        <%= link_to image_tag('like.png', alt: 'like'), post_likes_path(post_id: post.id, user_id: current_user.id), data: { turbo_method: :post }, class: "image is-16x16 has-text-success is-flex" %>
       <% end %>
       <%= "#{post.likes.length}" %>
     </div>
