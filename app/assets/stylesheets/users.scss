@@ -10,3 +10,28 @@ input[type="radio"], .tab-pane { display: none; }
 #friends:checked ~ .tab-content > .content-friends, {
   display: block;
 }
+
+.user-block {
+  padding-bottom: 6px;
+  padding-top: 6px;
+  align-items: center;
+}
+
+.avatar-name {
+  padding-right: 12px;
+}
+
+.status-span {
+  padding-right: 12px;
+}
+
+.friendship-button {
+  padding-right: 12px;
+}
+
+.profile-friends-section {
+  padding-top: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 12px;
+}

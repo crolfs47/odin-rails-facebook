@@ -1,12 +1,8 @@
-<h1>Users</h1>
-<div>
-  <ul>
+<div class="section">
+  <h1 class="title is-5">All Fakebook Users</h1>
+  <div>
     <% @users.each do |user| %>
-      <li>
-        <%= render 'list', user: user %>
-      </li>
+      <%= render 'list', user: user %>
     <% end %>
-  </ul>
+  </div>
 </div>
-
-

@@ -1,8 +1,13 @@
-<% user.friends.each do |friend| %>
-  <%= render 'users/list', user: friend %>
-<% end %>
-
-Pending Friends
-<% user.pending_friends.each do |friend| %>
-  <%= render 'users/list', user: friend %>
-<% end %>
+<div class="profile-friends-section">
+  <div>
+  <% user.friends.each do |friend| %>
+    <%= render 'users/list', user: friend %>
+  <% end %>
+  </div><br>
+  <div>
+    <h1 class="has-text-weight-medium is-size-6">Pending Friends</h1>
+    <% user.pending_friends.each do |friend| %>
+      <%= render 'users/list', user: friend %>
+    <% end %>
+  </div>
+</div>
