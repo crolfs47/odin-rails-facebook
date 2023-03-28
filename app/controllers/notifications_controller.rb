@@ -8,7 +8,8 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.update(read: true)
     if @notification.action == 'friendship'
-      redirect_to user_friendships_path(current_user)
+      requestor = Friendship.find(@notification.notifiable_id).user
+      redirect_to user_path(requestor)
     elsif @notification.action == 'like'
       @post_id = Like.find(@notification.notifiable_id).post.id
       redirect_to post_path(@post_id)
@@ -19,6 +20,7 @@ class NotificationsController < ApplicationController
   end
 
   private
+
   def notification_params
     params.require(:notification).permit(:id)
   end

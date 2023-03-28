@@ -22,7 +22,7 @@
           </div>
           <div>
             <% if @user == current_user %>
-              <%= link_to "Edit Profile", edit_user_path(current_user), data: { turbo_frame: dom_id(@user, "edit-profile") }, class: "button is-success is-light is-outlined" %>
+              <%= link_to "Edit Profile", edit_user_path(current_user), data: { turbo_frame: dom_id(@user, "edit-profile") }, class: "button is-success is-small is-outlined" %>
             <% end %>
             <% if @user != current_user %>
               <%= render 'friendship_buttons', user: @user %>
