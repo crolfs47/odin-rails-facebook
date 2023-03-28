@@ -30,11 +30,7 @@
               <% elsif @user.pending_friends.include?(current_user)%>
                 <span class="tag is-success is-light is-medium">Friendship Pending</span>
               <% else %>
-                <%= form_with model: @friendship, url: user_friendships_path(current_user.id) do |form| %>
-                  <%= form.hidden_field :user_id, value: current_user.id %>
-                  <%= form.hidden_field :friend_id, value: @user.id %>
-                  <%= form.submit "Add Friend", class: "button is-success is-light is-outlined" %>
-                <% end %>
+                <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friend_id: @user.id), data: { turbo_method: :post }, class: "button is-success is-light is-outlined is-small" %>
               <% end %>
             <% end %>
           </div>
