@@ -8,13 +8,16 @@
           <%= render 'users/avatar_name', user: user %>
           <% if current_user.friends.include?(user) %>
             <% friendship = current_user.find_friendship(user) %>
-            <%= link_to "Unfriend", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-light is-outlined is-small"%>
+            <%= link_to "Unfriend", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small"%>
           <% elsif current_user.pending_friends_sent.include?(user) %>
-            <%= 'Cancel Friend Request' %>
+            <span class="tag is-success is-light">Friendship Pending</span>
+            <% friendship = current_user.find_friendship(user) %>
+            <%= link_to "Cancel Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-success is-outlined is-small" %>
           <% elsif current_user.pending_friends_rec.include?(user) %>
-            <%= 'Accept Friend Request' %>
+            <span class="tag is-success is-light">Friendship Pending</span>
+            <%= 'Accept or Decline Friend Request' %>
           <% else %>
-            <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friend_id: user.id), data: { turbo_method: :post }, class: "button is-success is-light is-outlined is-small" %>
+            <%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friend_id: user.id), data: { turbo_method: :post }, class: "button is-success is-outlined is-small" %>
           <% end %>
         <% end %>
         </div>
