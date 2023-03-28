@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
     
     if @friendship.accept
       flash[:notice] = 'Friendship Confirmed'
-      redirect_to user_friendships_path(current_user)
+      redirect_back_or_to root_path
     else
       flash[:warning] = 'Something went wrong'
     end
