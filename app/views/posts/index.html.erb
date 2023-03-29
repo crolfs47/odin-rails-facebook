@@ -7,8 +7,8 @@
           <%= form.text_area :content, placeholder: "What's on your mind, #{current_user.full_name}?", type: "text", class: "textarea is-small is-success is-rounded" %>
         </p>
       </div>
-      <div class="control">
-        <%= form.submit "Post", class: "button is-success is-light is-rounded is-fullwidth" %>
+      <div class="is-flex is-justify-content-right" >
+        <%= form.submit "Post", class: "button is-success is-light is-rounded " %>
       </div>
     <% end %><br>
   </div>

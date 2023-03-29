@@ -2,7 +2,7 @@
   <% post.comments.each do |comment| %>
     <div class="media is-align-items-center" >
       <div class="media-content">
-        <small><strong><%= comment.user.full_name %></strong></small>
+        <small><%= link_to comment.user.full_name, comment.user, class: 'has-text-success-dark has-text-weight-semibold' %></small>
         <br>
         <small><%= comment.content %></small>
       </div>

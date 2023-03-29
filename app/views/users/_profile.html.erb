@@ -20,7 +20,7 @@
             <strong><%= "High School: "%></strong><%= @user.high_school %><br>
             <br>
           </div>
-          <div>
+          <div class="is-flex is-align-items-center">
             <% if @user == current_user %>
               <%= link_to "Edit Profile", edit_user_path(current_user), data: { turbo_frame: dom_id(@user, "edit-profile") }, class: "button is-success is-small is-outlined" %>
             <% end %>

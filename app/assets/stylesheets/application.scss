@@ -58,3 +58,20 @@
   margin-right: 6px;
 }
 
+.media-left {
+  margin-right: .5rem;
+}
+
+.tabs a {
+  align-items: center;
+  border-bottom-color: #dbdbdb;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  color:#48c78e;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -1px;
+  padding: 0.5em 1em;
+  vertical-align: top;
+}
