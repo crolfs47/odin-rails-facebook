@@ -18,11 +18,11 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    
     return unless @friendship
     
     if @friendship.accept
       flash[:notice] = 'Friendship Confirmed'
+      Notification.find_by(notifiable: @friendship).update(read: true)
       redirect_back_or_to root_path
     else
       flash[:warning] = 'Something went wrong'

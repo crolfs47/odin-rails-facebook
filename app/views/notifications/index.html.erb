@@ -1,11 +1,13 @@
-<h1><%= " #{current_user.full_name}'s Notifications" %></h1><br>
+<div class="section">
+<h1 class="title is-5"><%= "Notifications" %></h1>
 
-<h1>Unread</h1>
+<h1 class="notification-subtitle">Unread</h1>
 <% @notifications.unread.each do |notification| %>
   <%= render 'notification', notification: notification %>
-<% end %><br><br>
+<% end %><br>
 
-<h1>Read</h1>
+<h1 class="notification-subtitle">Read</h1>
 <% @notifications.read.each do |notification| %>
   <%= render 'notification', notification: notification %>
-<% end %><br><br>
+<% end %>
+</div>

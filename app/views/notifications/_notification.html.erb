@@ -1,10 +1,19 @@
   <% if notification.action == 'friendship' %>
-    <%= "#{Friendship.find(notification.notifiable_id).user.full_name} sent you a " %>
-    <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    <div class="notification-container">
+      <%= render 'users/avatar_name', user: Friendship.find(notification.notifiable_id).user %>
+      <div class="notification-text">sent you a</div>
+      <%= link_to "friend request", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    </div>
   <% elsif notification.action == 'like' %>
-    <%= "#{Like.find(notification.notifiable_id).user.full_name} liked your" %>
-    <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    <div class="notification-container">
+      <%= render 'users/avatar_name', user: Like.find(notification.notifiable_id).user %>
+      <div class="notification-text">liked your</div>
+      <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    </div>
   <% elsif notification.action == 'comment' %>
-    <%= "#{Comment.find(notification.notifiable_id).user.full_name} commented on your" %>
-    <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
-  <% end %><br>
+    <div class="notification-container">
+      <%= render 'users/avatar_name', user: Comment.find(notification.notifiable_id).user %>
+      <div class="notification-text">commented on your</div>
+      <%= link_to "post", mark_as_read_notifications_path(notification.id), data: { turbo_method: :patch } %>
+    </div>
+  <% end %>

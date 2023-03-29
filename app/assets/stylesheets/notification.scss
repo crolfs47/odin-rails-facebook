@@ -1,0 +1,15 @@
+.notification-container {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+}
+
+.notification-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  padding-bottom: 12px;
+}
+
+.notification-text {
+  padding-right: 5px;
+}
