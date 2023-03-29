@@ -12,9 +12,6 @@ RSpec.describe 'Comment', type: :feature do
       login_as(user1)
       visit root_path
       expect(page).to have_content('User 2 test comment')
-      # fill_in 'Write a comment...', with: 'User 1 test comment'
-      # click_on 'Add comment'
-      # expect(page).to have_content('New comment created.')
     end
 
     it 'does not allow a blank comment' do

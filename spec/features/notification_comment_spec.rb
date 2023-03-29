@@ -11,13 +11,12 @@ RSpec.describe 'Notification', type: :feature do
 
   context 'When user 1 comments on a post that user 2 made' do
     before do
-      # login_as(user2)
-      # @comment = comment
+      # login_as(user1)
       # visit root_path
     end
 
     it 'user 2 gets a notification' do
-      # expect(page).to have_content('1 New Notification')
+      # expect(page).to have_content('Add comment')
     end
 
     it 'user 2 gets the correct type of unread notification' do
