@@ -21,14 +21,14 @@ RSpec.describe 'Notification', type: :feature do
     end
 
     it 'user 2 gets the correct type of unread notification' do
-      expect(page).to have_content("Unread\n#{user1.full_name} liked your post")
+      expect(page).to have_content("Unread\n#{user1.full_name}\nliked your\npost")
     end
 
     it 'switches to read when user 2 clicks on the notification link' do
       click_on 'post'
       visit notifications_path
-      expect(page).not_to have_content("Unread\n#{user1.full_name} liked your post")
-      expect(page).to have_content("Read\n#{user1.full_name} liked your post")
+      expect(page).not_to have_content("Unread\n#{user1.full_name}\nliked your\npost")
+      expect(page).to have_content("Read\n#{user1.full_name}\nliked your\npost")
     end
   end
 
