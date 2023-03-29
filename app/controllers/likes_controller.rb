@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     @like = @post.likes.create(post_id: params[:post_id], user_id: params[:user_id])
     Notification.create(user_id: @post.user_id, notifiable: @like, action: 'like')
-    redirect_to root_path
+    redirect_back_or_to root_path
   end
 
   def destroy
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     @like = @post.find_like(current_user)
     @like.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_back_or_to root_path, status: :see_other
   end
 
   private

@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(post_id: params[:post_id], user_id: params[:user_id], content: params[:content])
-    redirect_to root_path
+    redirect_back_or_to root_path
     if @comment.save
       flash[:notice] = 'New comment created.'
       Notification.create(user_id: @post.user_id, notifiable: @comment, action: 'comment')
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_back_or_to root_path, status: :see_other
     flash[:notice] = 'Comment successfully deleted.'
   end
 
