@@ -34,4 +34,13 @@ users = User.create([
   { email: 'prayerplant@test.com', password: 'password', full_name: 'Prayer Plant', location: 'Chicago, IL', birthday: "2015-06-01", college: "Plant University", high_school: "Plant High School", occupation: "Plant" },
   { email: 'pincushioncactus@test.com', password: 'password', full_name: 'Pincushion Cactus', location: 'Chicago, IL', birthday: "2015-07-01", college: "Plant University", high_school: "Plant High School", occupation: "Plant" },
   { email: 'alocasiaodora@test.com', password: 'password', full_name: 'Alocasia Odora', location: 'Chicago, IL', birthday: "2015-08-01", college: "Plant University", high_school: "Plant High School", occupation: "Plant" },
+  { email: 'guest@test.com', password: 'password', full_name: 'Guest User', location: 'Unknown', birthday: "2023-01-01", college: "Unknown", high_school: "Unknown", occupation: "Unknown" },
 ])
+
+
+users.each do |user|
+  user.avatar.attach(
+    io: File.open(File.join(Rails.root, "app/assets/images/avatars/#{user.id}.png")),
+    filename: "#{user.id}.png"
+  )
+end
