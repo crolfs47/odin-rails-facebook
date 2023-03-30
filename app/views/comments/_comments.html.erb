@@ -2,9 +2,10 @@
   <% post.comments.each do |comment| %>
     <div class="media is-align-items-center" >
       <div class="media-content">
-        <small><%= link_to comment.user.full_name, comment.user, class: 'has-text-success-dark has-text-weight-semibold' %></small>
-        <br>
-        <small><%= comment.content %></small>
+        <div class="is-flex is-align-items-center">
+          <%= render 'users/avatar_name', user: comment.user %>
+          <small><%= comment.content %></small>
+        </div>
       </div>
       <div class="media-right">
         <% if current_user.id == comment.user.id %>
