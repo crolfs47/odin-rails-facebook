@@ -12,8 +12,12 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane content-posts">
-    <% @posts.each do |post| %>
-      <%= render 'posts/post', post: post %>
+    <% if @posts.length == 0 %>
+      <div class="profile-friends-section"><%= "#{@user.full_name} has no posts" %></div>
+    <% else %>
+      <% @posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
     <% end %>
   </div>
   <div class="tab-pane content-friends">
