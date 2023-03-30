@@ -30,9 +30,6 @@
               <a class="navbar-item">
                 <%= link_to "#{current_user.notifications.unread.length} New Notifications", notifications_path, class: "navbar-item" %>
               </a>
-              <a class="navbar-item">
-                <%= link_to 'All Notifications', notifications_path, class: "navbar-item" %>
-              </a>
             </div>
           </div>
         <% end %>
