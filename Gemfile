@@ -79,3 +79,4 @@ gem "bulma-rails", "~> 0.9.4"
 gem "factory_bot_rails"
 
 gem 'simplecov', require: false, group: :test
+gem "dockerfile-rails", ">= 1.2", :group => :development
