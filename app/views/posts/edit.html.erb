@@ -3,7 +3,7 @@
       <%= form_with model: @post do |form| %>
         <%= form.hidden_field :user_id, value: current_user.id %>
         <div>
-          <%= form.text_area :content %>
+          <%= form.text_area :content, class: "textarea is-success is-small is-rounded" %>
         </div>
         <div>
           <%= form.submit class: "button is-success is-outlined is-small" %>
