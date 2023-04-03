@@ -1,6 +1,6 @@
-# fly.toml file generated for fakebook-cr on 2023-03-30T15:09:35-05:00
+# fly.toml file generated for fakebookcr on 2023-04-03T11:02:15-05:00
 
-app = "fakebook-cr"
+app = "fakebookcr"
 kill_signal = "SIGINT"
 kill_timeout = 5
 mounts = []
@@ -28,3 +28,7 @@ processes = []
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[mounts]
+  source="fakebookcr_data"
+  destination="/data"
