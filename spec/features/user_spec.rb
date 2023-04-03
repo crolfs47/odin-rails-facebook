@@ -7,7 +7,7 @@ RSpec.describe 'User', type: :feature do
   context 'When user is not logged in' do
     it 'requires login' do
       visit root_path
-      expect(page).to have_content('Log in')
+      expect(page).to have_content('Login')
     end
   end
 
