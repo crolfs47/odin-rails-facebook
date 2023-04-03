@@ -65,3 +65,28 @@ Assignment - https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-pr
 View Project - https://fakebookcr.fly.dev/ (can login with guest account if you don't want to register - Email: guest@test.com, Password: password)
 
 ## Screenshots:
+Login:
+![f](https://user-images.githubusercontent.com/97067689/229606815-2245b71e-71ae-42e9-a834-683eb718daaf.png)
+
+Newsfeed:
+![f](https://user-images.githubusercontent.com/97067689/229607130-39e7ad80-d422-4d87-8bb8-a1c5dfd47deb.png)
+
+Discover Users:
+![f](https://user-images.githubusercontent.com/97067689/229607259-7134bcba-2c35-4fb1-a602-c9c516bdedd4.png)
+
+Notifications:
+![f](https://user-images.githubusercontent.com/97067689/229607843-c0b6dd01-c494-450b-bd18-42540c283b10.png)
+
+User Profile - Posts:
+![f](https://user-images.githubusercontent.com/97067689/229607409-5347f7f9-0b71-408f-815d-db370414baa8.png)
+
+User Profile - Friends:
+![f](https://user-images.githubusercontent.com/97067689/229607555-cd514c19-c659-4af7-853d-be6ca03870d5.png)
+
+Edit User Profile:
+![f](https://user-images.githubusercontent.com/97067689/229607715-1f505040-fde7-4590-a80d-c652c086309c.png)
+
+Edit Post:
+![f](https://user-images.githubusercontent.com/97067689/229608021-ffa7a6cc-2a1a-4f2c-b358-b19573f40085.png)
+
+
