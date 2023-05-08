@@ -19,6 +19,14 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def destroy
+    @notification = Notification.find(params[:id])
+    @notification.destroy
+
+    redirect_back_or_to root_path, status: :see_other
+    flash[:notice] = 'Notification successfully deleted.'
+  end
+
   private
 
   def notification_params

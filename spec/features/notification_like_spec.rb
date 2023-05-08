@@ -30,6 +30,13 @@ RSpec.describe 'Notification', type: :feature do
       expect(page).not_to have_content("Unread\n#{user1.full_name}\nliked your\npost")
       expect(page).to have_content("Read\n#{user1.full_name}\nliked your\npost")
     end
+
+    it 'they can delete a read notification' do
+      click_on 'post'
+      visit notifications_path
+      click_link('delete')
+      expect(page).to have_content('Notification successfully deleted.')
+    end
   end
 
 end

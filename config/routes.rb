@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :friendships
   end
 
-  resources :notifications, only: %i[index mark_as_read] do
+  resources :notifications, only: %i[index mark_as_read destroy] do
     collection do
       patch :mark_as_read, path: 'mark_as_read_notifications/:id'
     end

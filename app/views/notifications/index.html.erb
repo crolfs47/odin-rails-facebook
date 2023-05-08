@@ -3,11 +3,16 @@
 
 <h1 class="notification-subtitle">Unread</h1>
 <% @notifications.unread.each do |notification| %>
-  <%= render 'notification', notification: notification %>
+  <div class="notification-div">
+    <%= render 'notification', notification: notification %>
+  </div>
 <% end %><br>
 
 <h1 class="notification-subtitle">Read</h1>
 <% @notifications.read.each do |notification| %>
-  <%= render 'notification', notification: notification %>
+  <div class="notification-div">
+    <%= render 'notification', notification: notification %>
+    <%= link_to image_tag('delete.png', alt: 'delete'), notification_path(id: notification.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "image is-16x16" %>
+  </div>
 <% end %>
 </div>
