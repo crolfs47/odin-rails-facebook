@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :rsvps, foreign_key: :attendee_id, dependent: :destroy
+  has_many :hosted_events, class_name: 'Event', foreign_key: :host_id, dependent: :destroy
+  has_many :attended_events, through: :rsvps, source: :event, dependent: :destroy
 
   # To get friendships current user requested
   has_many :friendships, dependent: :destroy 

@@ -1,14 +1,14 @@
 <% friendship = current_user.find_friendship(user) %>
 <% if current_user.friends.include?(user) %>
-  <div class="status-span"><span class="tag is-success is-light">Friends</span></div>
-  <div class="friendship-button"><%= link_to "Unfriend", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small"%></div>
+    <div class="status-span"><span class="tag is-success is-light">Friends</span></div>
+    <div class="friendship-button"><%= link_to "Unfriend", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small"%></div>
 <% elsif current_user.pending_friends_sent.include?(user) %>
-  <div class="status-span"><span class="tag is-light">Friendship Pending</span></div>
-  <div class="friendship-button"><%= link_to "Cancel Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small" %></div>
+    <div class="status-span"><span class="tag is-light">Friendship Pending</span></div>
+    <div class="friendship-button"><%= link_to "Cancel Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small" %></div>
 <% elsif current_user.pending_friends_rec.include?(user) %>
-  <div class="status-span"><span class="tag is-light">Friendship Pending</span></div>
-  <div class="friendship-button"><%= link_to "Confirm Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :patch }, class: "button is-success is-outlined is-small" %></div>
-  <div class="friendship-button"><%= link_to "Decline Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small"%></div>
+    <div class="status-span"><span class="tag is-light">Friendship Pending</span></div>
+    <div class="friendship-button"><%= link_to "Confirm Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :patch }, class: "button is-success is-outlined is-small" %></div>
+    <div class="friendship-button"><%= link_to "Decline Request", user_friendship_path(id: friendship.id, user_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small"%></div>
 <% else %>
-  <div class="friendship-button"><%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friend_id: user.id), data: { turbo_method: :post }, class: "button is-success is-outlined is-small" %></div>
+    <div class="friendship-button"><%= link_to "Add Friend", user_friendships_path(user_id: current_user.id, friend_id: user.id), data: { turbo_method: :post }, class: "button is-success is-outlined is-small" %></div>
 <% end %>
