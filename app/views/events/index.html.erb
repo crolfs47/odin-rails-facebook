@@ -1,9 +1,11 @@
 <div class="section">
   <h1 class="title is-5">Events</h1>
   <div class="section">
-    <% @events.each do |event| %>
-      <%= event.name %>
-      <%= event.host.full_name %><br>
-    <% end %>
+    <h2 class="title is-5 has-text-success">Events</h2>
+    <div class="event-card-container">
+      <% @events.each do |event| %>
+        <%= render "card", event: event %>
+      <% end %>
+    </div>
   </div>
 </div>
