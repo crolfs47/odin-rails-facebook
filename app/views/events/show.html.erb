@@ -1,6 +1,29 @@
 <div class="section">
-  <div class="section">
-    <%= @event.name %>
-    <%= @event.host.full_name %>
+
+    <h1 class="title is-3 is-underlined"><%= @event.name %></h1>
+    
+      <div class="block">
+        <div><b>Hosted by: </b><%= @event.host.full_name %></div>
+      </div>
+      <div class="block">
+        <h2 class="is-size-5 has-text-weight-bold" >When & Where:</h2>
+        <li><b>Date: </b><%= @event.date.strftime('%B %d, %Y') %></li>
+        <li><b>Start: </b><%= @event.start_time.strftime('%I:%M:%S %p') %></li>
+        <li><b>End: </b><%= @event.end_time.strftime('%I:%M:%S %p')  %></li>
+        <li><b>Location: </b><%= @event.location %></li>
+      </div>
+      <div class="block">
+        <h2 class="is-size-5 has-text-weight-bold">About This Event:</h2>
+        <div><%= @event.details %></div>
+      </div>
+      <div class="block">
+        <h2 class="is-size-5 has-text-weight-bold">Who's Attending:</h2>
+        <div>
+          
+            <li>
+              RSVPs go here
+            </li>
+        </div>
+      </div>
+
   </div>
-</div>
