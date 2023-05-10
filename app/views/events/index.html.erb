@@ -1,5 +1,9 @@
-<h1>Events</h1>
-<% @events.each do |event| %>
-  <%= @event.name %>
-  <%= @event.host_id %>
-<% end %>
+<div class="section">
+  <h1 class="title is-5">Events</h1>
+  <div class="section">
+    <% @events.each do |event| %>
+      <%= event.name %>
+      <%= event.host.full_name %><br>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="column is-centered">
+  <div class="column is-half">
+    <%= form_with model: @event do |form| %>
+      <div class="field">
+        <%= form.label :name, class: "label has-text-success-dark" %>
+        <div class="control">
+          <%= form.text_field :name, class: "input is-small" %>
+        </div>
+        <% @event.errors.full_messages_for(:name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      
+      <div class="field">
+        <%= form.label :date, class: "label has-text-success-dark" %>
+        <div class="control">
+          <%= form.date_field :date, class: "input is-small" %>
+        </div>
+        <% @event.errors.full_messages_for(:date).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <div class="field">
+        <%= form.label :start_time, class: "label has-text-success-dark" %>
+        <div class="control">
+          <%= form.time_field :start_time, class: "input is-small" %>
+        </div>
+        <% @event.errors.full_messages_for(:start_time).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <div class="field">
+        <%= form.label :end_time, class: "label has-text-success-dark" %>
+        <div class="control">
+          <%= form.time_field :end_time, class: "input is-small" %>
+        </div>
+        <% @event.errors.full_messages_for(:end_time).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <div class="field">
+        <%= form.label :location, class: "label has-text-success-dark" %>
+        <div class="control">
+          <%= form.text_field :location, class: "input is-small" %>
+        </div>
+        <% @event.errors.full_messages_for(:location).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <div class="field">
+        <%= form.label :details, class: "label has-text-success-dark" %>
+        <div class="control">
+          <%= form.text_area :details, class: "textarea is-small" %>
+        </div>
+        <% @event.errors.full_messages_for(:details).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <div>
+        <%= form.submit class: "button is-success is-outlined is-small" %>
+      </div>
+    <% end %>
+  </div>
+</div>
