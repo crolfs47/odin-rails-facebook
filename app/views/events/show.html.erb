@@ -2,7 +2,7 @@
   <div class="event-show-container">
     <h1 class="title is-3 is-underlined"><%= @event.name %></h1>
     <div class="block">
-      <div><b>Hosted by: </b><%= @event.host.full_name %></div>
+      <div class="is-flex is-align-items-center"><b>Hosted by: </b><%= render 'users/avatar_name', user: @event.host %></div>
     </div>
     <div class="block">
       <h2 class="is-size-5 has-text-weight-bold" >When & Where:</h2>
@@ -16,12 +16,12 @@
       <div><%= @event.details %></div>
     </div>
     <div class="block">
-      <h2 class="is-size-5 has-text-weight-bold">Who's Attending:</h2>
+      <h2 class="is-size-5 has-text-weight-bold"><%= @event.rsvps.count %> People Attending:</h2>
       <div>
         <% @event.rsvps.each do |rsvp| %>
-          <li>
-            <%= rsvp.attendee.full_name %>
-          </li>
+          <div class="user-block">
+            <%= render 'users/avatar_name', user: rsvp.attendee %>
+          </div>
         <% end %>
       </div>
     </div>
