@@ -46,4 +46,7 @@ class User < ApplicationRecord
     likes.where(post_id: post.id).exists?
   end
 
+  def attending_event?(event)
+    attended_events.where(id: event.id).exists?
+  end
 end

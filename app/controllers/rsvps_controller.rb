@@ -3,7 +3,7 @@ class RsvpsController < ApplicationController
     @rsvp = current_user.rsvps.build(event_id: params[:event_id])
     @event = Event.find(@rsvp.event_id)
 
-    if current_user.attended_events.where(id: @event.id).present?
+    if current_user.attending_event?(@event)
       flash[:notice] = "You're already attending this event."
       redirect_to @event
     elsif @rsvp.save
