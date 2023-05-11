@@ -1,6 +1,6 @@
 <div class="section">
   <h1 class="title is-5">All Fakebook Users</h1>
-  <div>
+  <div class="users-container">
     <% @users.each do |user| %>
       <%= render 'list', user: user %>
     <% end %>
