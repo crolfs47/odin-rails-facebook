@@ -19,11 +19,18 @@
       <div class="block">
         <h2 class="is-size-5 has-text-weight-bold">Who's Attending:</h2>
         <div>
-          
+          <% @event.rsvps.each do |rsvp| %>
             <li>
-              RSVPs go here
+              <%= rsvp.attendee.full_name %>
             </li>
+          <% end %>
         </div>
+      </div>
+      <div>
+        <%= form_with model: @rsvp, url: rsvps_path do |form| %>
+          <%= form.hidden_field :event_id, value: @event.id %>
+          <%= form.submit 'Attend This Event', class: "button is-success is-outlined is-small" %>
+        <% end %>
       </div>
 
   </div>

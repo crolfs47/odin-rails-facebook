@@ -22,5 +22,7 @@ Rails.application.routes.draw do
 
   resources :events
 
+  resources :rsvps, only: [:create]
+
   # get 'friendships', to: 'friendships#index'
 end
