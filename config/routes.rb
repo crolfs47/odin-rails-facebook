@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :events
 
-  resources :rsvps, only: [:create]
+  resources :rsvps, only: %i[create destroy]
 
   # get 'friendships', to: 'friendships#index'
 end

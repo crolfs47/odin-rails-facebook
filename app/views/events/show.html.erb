@@ -27,9 +27,13 @@
         </div>
       </div>
       <div>
-        <%= form_with model: @rsvp, url: rsvps_path do |form| %>
-          <%= form.hidden_field :event_id, value: @event.id %>
-          <%= form.submit 'Attend This Event', class: "button is-success is-outlined is-small" %>
+        <% if current_user.attending_event?(@event)%>
+          <%= link_to 'No Longer Attending Event', rsvp_path(event_id: @event.id, attendee_id: current_user.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button is-danger is-outlined is-small" %>
+        <% else %>
+          <%= form_with model: @rsvp, url: rsvps_path do |form| %>
+            <%= form.hidden_field :event_id, value: @event.id %>
+            <%= form.submit 'Attend This Event', class: "button is-success is-outlined is-small" %>
+          <% end %>
         <% end %>
       </div>
 

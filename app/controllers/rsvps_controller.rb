@@ -13,6 +13,14 @@ class RsvpsController < ApplicationController
     end
   end
 
+  def destroy
+    @rsvp = Rsvp.find(params[:id])
+    @rsvp.destroy
+
+    redirect_back_or_to root_path, status: :see_other
+    flash[:notice] = "You're no longer attending this event."
+  end
+
   private
 
   def rsvp_params
