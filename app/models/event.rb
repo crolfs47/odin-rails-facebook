@@ -8,4 +8,7 @@ class Event < ApplicationRecord
   belongs_to :host, class_name: 'User'
   has_many :rsvps, dependent: :destroy
   has_many :attendees, through: :rsvps, dependent: :destroy
+
+  scope :upcoming, -> { where('date >= ?', Date.today).order(date: :asc) }
+  scope :past, -> { where('date < ?', Date.today).order(date: :desc)}
 end
