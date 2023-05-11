@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :events
+  resources :events, only: %i[index show new create destroy]
 
   resources :rsvps, only: %i[create destroy]
 
