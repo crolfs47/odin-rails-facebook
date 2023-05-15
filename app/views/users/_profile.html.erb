@@ -24,12 +24,11 @@
           <% end %>
         </div>
       <% end %>
-        <div class="is-flex is-align-items-center">
-          <% if @user != current_user %>
-            <%= render 'friendship_buttons', user: @user %>
-          <% end %>
-        </div>
-
+      <div class="is-flex is-align-items-center">
+        <% if @user != current_user %>
+          <%= render 'friendship_buttons', user: @user %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

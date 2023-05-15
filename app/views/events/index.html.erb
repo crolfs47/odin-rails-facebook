@@ -2,20 +2,5 @@
   <div class="events-container">
     <%= link_to 'Create New Event', new_event_path, class: "button is-success is-light is-outlined" %>
   </div>
-  <div class="events-container">
-    <h2 class="title is-5">Upcoming Events</h2>
-    <div class="event-card-container">
-      <% @events.upcoming.each do |event| %>
-        <%= render "card", event: event %>
-      <% end %>
-    </div>
-  </div>
-  <div class="events-container">
-    <h2 class="title is-5">Past Events</h2>
-    <div class="event-card-container">
-      <% @events.past.each do |event| %>
-        <%= render "card", event: event %>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'list' %>
 </div>

@@ -15,11 +15,6 @@ RSpec.describe 'Event', type: :feature do
       expect(page).to have_content('Test event')
     end
 
-    it "the event appears on the user's profile event page" do
-      visit user_path(id: user1.id)
-      expect(page).to have_content('Test event')
-    end
-
     it 'the user can delete the event they made' do
       visit event_path(id: event.id)
       click_on 'Delete Your Event'

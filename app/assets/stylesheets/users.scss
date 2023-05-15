@@ -6,7 +6,8 @@
 input[type="radio"], .tab-pane { display: none; }
 
 #posts:checked ~ .tab-content > .content-posts,
-#friends:checked ~ .tab-content > .content-friends, {
+#friends:checked ~ .tab-content > .content-friends,
+#events:checked ~ .tab-content > .content-events, {
   display: block;
 }
 

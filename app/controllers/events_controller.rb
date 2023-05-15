@@ -12,13 +12,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.hosted_events.build(event_params)
-
-    if @event.save
-      redirect_to @event
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @event = current_user.hosted_events.create(event_params)
+    Rsvp.create(attendee_id: current_user.id, event_id: @event.id)
+    redirect_to @event
   end
 
   def destroy

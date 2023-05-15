@@ -3,10 +3,12 @@
 </div>
 <input type="radio" checked="checked" id="posts" name="nav-tab">
 <input type="radio" id="friends" name="nav-tab">
+<input type="radio" id="events" name="nav-tab">
 <div class="tabs">
   <ul>
     <li><label for="posts"><a>Posts</a></label></li>
     <li><label for="friends"><a>Friends</a></label></li>
+    <li><label for="events"><a>Events</a></label></li>
   </ul>
 </div>
 <!-- Tab panes -->
@@ -22,5 +24,8 @@
   </div>
   <div class="tab-pane content-friends">
     <%= render 'friendships/friends', user: @user%>
+  </div>
+  <div class="tab-pane content-events">
+    <%= render 'events/list' %>
   </div>
 </div>
