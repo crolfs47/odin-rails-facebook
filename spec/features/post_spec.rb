@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Like', type: :feature do
+RSpec.describe 'Post', type: :feature do
   let!(:user1) { FactoryBot.create(:user, :user1) }
   let!(:user2) { FactoryBot.create(:user, :user2) }
   let!(:post) { Post.create(user: user1, content: 'Test post') }
