@@ -14,6 +14,8 @@ Notification.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('notifications')
 Event.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
+Rsvp.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('rsvps')
 
 users = User.create([
   { email: 'crolfs47@gmail.com', password: 'password', full_name: 'Cathy Rolfs', location: 'Chicago, IL', birthday: "1989-06-01", college: "Notre Dame", high_school: "Chicago High School", occupation: "Student" },
