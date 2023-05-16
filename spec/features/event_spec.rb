@@ -16,6 +16,16 @@ RSpec.describe 'Event', type: :feature do
       click_on 'Create Event'
       expect(page).to have_content("Name can't be blank")
     end
+
+    it 'they can create a new event' do
+      fill_in 'Name', with: 'New Test Event'
+      fill_in 'Date', with: Date.today
+      fill_in 'Start time', with: '19:00:00'
+      fill_in 'End time', with: '22:00:00'
+      fill_in 'Location', with: 'Test'
+      click_on 'Create Event'
+      expect(page).to have_content 'New Test Event'
+    end
   end
 
   context 'When a user creates an event' do
