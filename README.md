@@ -6,7 +6,7 @@ Project completed as part of The Odin Project. Build an application similar to F
 ## Features:
  - Users 
     - Users can register and login via Devise
-    - Users have a profile page that shows their personal information, posts, and friends
+    - Users have a profile page that shows their personal information, posts, friends, and events
     - Users can edit their personal information and upload a profile picture using Active Storage
     - Users can view all other users profile pages
  - Friendships
@@ -25,6 +25,11 @@ Project completed as part of The Odin Project. Build an application similar to F
     - The user can hover over the bell to see how many unread notifications they have and navigate to the notifications page
     - The notifications page displays all unread and read notifications
     - When a user clicks on an unread notification it becomes a read notification
+ - Events
+    - Users can create events and delete events they've created
+    - Users can rsvp to attend events, or remove their rsvp to no longer attend the event
+    - Events index page shows all events, sorted by upcoming vs past events
+    - A user's profile page shows all events they've rsvped to attend
  - Timeline: the main page is a timeline that shows recent posts of the current user and posts of the users they are friends with
  - Discover Users page: lists all users adn has a button for sending/accepting friend requests depending on their friendship status
  - Tested with RSpec and Capybara with 97% code coverage
@@ -52,12 +57,13 @@ Project completed as part of The Odin Project. Build an application similar to F
  - More complex Active Record associations and querying
     - The friendship model was challenging to implement with friend requests and accepting the request - had to figure out how to query sent vs. received friendships, accepted vs. pending friendships, and how to find a user's friendships depending on whether they were the requestor or requestee
     - Creating the notifications model with a polymorphic association belonging to friendships, comments, and likes
+    - Creating the events and rsvps models with many-to-many association (has_many :through)
  - Better understanding of how to use Rspec and Capybara for testing in Rails
  - How to deploy using Fly.io and use volumes for persistent storage with images
  
 ## Still can improve:
  - Add additional features: allow comments to be edited, let users see who liked a post and not just the like count, let posts allow images
- - Use turbo frames for more parts of the app (likes, adding friends)
+ - Add javascript for navbar burger, modal overlay for new events form, tabbed browsing on user profile page
  - User interface, mobile compatibility - was mostly focused on functionality for this application
 
 Assignment - https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
